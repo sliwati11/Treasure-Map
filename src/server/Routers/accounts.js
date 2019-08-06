@@ -19,7 +19,7 @@ Account.findAll()
         //console.table(Account);
         res.sendStatus(200);
     })
-    .catch(err => console.log(err)));
+    .catch(err => console.log(err))); */
 
 
 //Add a Account
@@ -41,9 +41,4 @@ router.get('/ad',(req, res)=>{
 
 });
 
-module.exports = router; */
-
-module.exports = function(app){
-    const accounts = require('../');
-
-}
+module.exports = router;

@@ -19,7 +19,7 @@ module.exports = Account;
 */
 
 module.exports = (sequelize, Sequelize) => {
-    const Account = sequelize.define('Customers',
+    const Account = sequelize.define('accounts',
         {
             firstname: {
                 type: Sequelize.STRING
@@ -27,7 +27,13 @@ module.exports = (sequelize, Sequelize) => {
             lastname: {
                 type: Sequelize.STRING
             },
-            age: {
+            email: {
+                type: Sequelize.STRING
+            },
+            username : {
+                type: Sequelize.STRING
+            },
+            password: {
                 type: Sequelize.STRING
             }
         

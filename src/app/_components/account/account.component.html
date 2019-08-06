@@ -1,0 +1,5 @@
+<p>account works!</p>
+<h5>All Accounts</h5>
+<div *ngFor="let acc of accounts">
+  <a [routerLink]="['/accounts', acc.id]" style="color:black"><span class="badge badge-dark">{{acc.id}}</span> -> {{ acc.firstname }}</a>
+</div>

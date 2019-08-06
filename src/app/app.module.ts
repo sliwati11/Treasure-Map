@@ -12,7 +12,10 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
-import { AlertComponent } from './_components';
+import { AlertComponent } from './_components';;
+import { AddAccountComponent } from './_controllers/add-account/add-account.component'
+import { AccountDetailsComponent } from './_controllers/account-details/account-details.component';;
+import { AccountComponent } from './_components/account/account.component'
 
 @NgModule({
     imports: [
@@ -23,11 +26,17 @@ import { AlertComponent } from './_components';
         appRoutingModule
     ],
     declarations: [
+        AddAccountComponent,
+        AccountDetailsComponent,
         AppComponent,
         HomeComponent,
         LoginComponent,
         RegisterComponent,
         AlertComponent
+,
+        AddAccountComponent
+,
+        AccountComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

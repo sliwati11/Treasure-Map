@@ -63,6 +63,10 @@ function execute_with_promise(){
   .finally( () => client.end()) 
   
 } */
+/////   
+//      
+//
+////  
 var express= require('express');
 var app = express();
 var bodyParser = require('body-parser');
@@ -71,12 +75,14 @@ app.use(bodyParser.json())
 
 const cors = require('cors');
 const corsoptions = {
-  origin: 'http://localhost:4200',
-  optionsSuccessStatus:200
+  origin: 'localhost',
+  optionsSuccessStatus:200,
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE"
 }
 
-app.use(cors(corsoptions))
-
+app.use(cors())//corsoptions))
+//Gig Routes
+app.use('/gigs',require('./Routers/account.route'));
 
 const db = require('../server/database');
 
@@ -90,8 +96,9 @@ require('../server/Routers/account.route')(app);
 
 // create a Server
 var server = app.listen(8090, function(){
-  let host = server.address().address
-  let port = server.address().port
+
+  let host = server.address().address;
+  let port = server.address().port;
   console.log("App listening at HTTp:%s:%s", host, port);
 
 })
@@ -101,36 +108,52 @@ function initial(){
     {
       firstname:"Joe",
       lastname:"Thomas",
+      username:"Thomi",
+      email : "Joe@gmail.com",
+      password:"123456",
       age: 36
     },
     {
       firstname:"Jowa",
       lastname:"Thos",
+      username:"Jwana",
+      email : "Jowa@gmail.com",
+      password:"123456",
       age: 36
     },
     {
       firstname:"Jowie",
       lastname:"dds",
+      username:"Jo",
+      email : "Jowie@gmail.com",
+      password:"123456",
       age: 36
     },
     {
       firstname:"Lauiren",
       lastname:"Thwas",
+      username:"Lui",
+      email : "Lauruibe@gmail.com",
+      password:"123456",
       age: 36
     },
     {
       firstname:"Mary",
       lastname:"Toos",
+      username:"Mu",
+      email : "Mary@gmail.com",
+      password:"123456",
       age: 36
     },
   ]
 
   // Init data -> save to Postgressql
 
-  const Account = db.accounts;
-  Account.create(accounts[2]);
-  for(let i ; i< accounts.length;i++){
+  const Account = db.Accounts;
+
+
+  for(let i=0 ; i< accounts.length;i++){
     Account.create(accounts[i]);
-    console.log('Account '+i);
   }
 }
+ 
