@@ -13,4 +13,4 @@ Full tutorial with example available at https://jasonwatmore.com/post/2019/06/10
 JSON Web Tokens (JWT) is becoming very popular these days than the traditional authentication uses cookies and sessions.
 JSON web tokens are text strings that can be used by client and server to authenticate and share information easily.
 
-https://miro.medium.com/max/3420/1*3yU_Zbhj9zDZwboFLHS1rg.png
+![image2](https://miro.medium.com/max/3420/1*3yU_Zbhj9zDZwboFLHS1rg.png)
