@@ -18,23 +18,23 @@ const Account = db.define('benutzer',
 module.exports = Account;
 */
 
-module.exports = (sequelize, Sequelize) => {
+module.exports = (sequelize, DataTypes) => {
     const Account = sequelize.define('accounts',
         {
             firstname: {
-                type: Sequelize.STRING
+                type: DataTypes.STRING
             },
             lastname: {
-                type: Sequelize.STRING
+                type: DataTypes.STRING
             },
             email: {
-                type: Sequelize.STRING
+                type: DataTypes.STRING
             },
             username : {
-                type: Sequelize.STRING
+                type: DataTypes.STRING
             },
             password: {
-                type: Sequelize.STRING
+                type: DataTypes.STRING
             }
         
         }

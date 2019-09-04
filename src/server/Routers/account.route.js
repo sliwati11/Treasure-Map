@@ -10,9 +10,14 @@ module.exports = function(app){
     app.post('/accounts/add', accounts.create);
 
     //Retrieve all Accounts
-    app.get('/accounts', accounts.findAll);
+    app.post('/accounts', accounts.findAll_control);
+    app.get('/accounts', accounts.findAll_control);
 
+    app.get('/accounts/1', accounts.findOne);
 
+    app.post('/accounts/authenticate', accounts.authenticateUser);
+    app.get('/accounts/authenticate', accounts.authenticateUser);
+    
     //Delete an Account with ID
     app.get('/api/accounts/:id', accounts.delete);
 }
