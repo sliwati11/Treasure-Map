@@ -1,4 +1,7 @@
+'use strict';
 const db = require('../database');
+var jwt = require('jsonwebtoken');
+var fs = require('fs');
 const account = db.Accounts;
 
 //Post a Account
@@ -6,6 +9,7 @@ exports.create = (req, res) => {
     res.setHeader("Content-Type", "text/html");
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    
     
     console.log("exportts create");
     // Save to PostgreSQL database
@@ -18,6 +22,7 @@ exports.create = (req, res) => {
     }).then( account =>{
         //Send created Account to Client
         res.json(account);
+        console.log("Token - " + account.token)
     }).catch(err => {
         console.log('Erororororor: '+err);
         res.status(500).json({msg:"error", details:err});
@@ -79,6 +84,7 @@ exports.authenticateUser = (req, res) => {
       }
       else{
         let eingeloggteUser= device.dataValues ;
+
         res.json({
           id: eingeloggteUser.id,
           username: eingeloggteUser.username,
