@@ -2,6 +2,7 @@
 import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
+import * as jwt from 'jsonwebtoken';
 
 // array in local storage for registered users
 let users = JSON.parse(localStorage.getItem('users')) || [];
@@ -40,6 +41,13 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             const { username, password } = body;
             const user = users.find(x => x.username === username && x.password === password);
             if (!user) return error('Username or password is incorrect');
+
+            const jwtBearerToken = jwt.sign({}, RSA_PRIVATE_KEY, {
+                algorithm: 'RS256',
+                expiresIn: 120,
+                subject: userId
+            };
+
             return ok({
                 id: user.id,
                 username: user.username,
