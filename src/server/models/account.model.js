@@ -1,22 +1,5 @@
 'use strict';
 
-/* const Sequelize = require('sequelize');
-const db = require('../database');
-
-
-const Account = db.define('benutzer',
-{
-    username: {
-        type: Sequelize.STRING
-    },
-    email: {
-        type: Sequelize.STRING
-    }
-    
-}) 
-
-module.exports = Account;
-*/
 
 module.exports = (sequelize, DataTypes) => {
     const Account = sequelize.define('accounts',//'accounts',

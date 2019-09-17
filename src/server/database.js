@@ -33,7 +33,7 @@ db.sequelize = sequelize;
 
 //Models / tables
 db.Accounts = require('./models/account.model')(sequelize, Sequelize);
-
+db.Map = require('./models/map.model')(sequelize, Sequelize);
 
 module.exports = db;
 

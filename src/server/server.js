@@ -42,6 +42,20 @@ var server = app.listen(8090, function(){
 })
 
 function initial(){
+  let maps=[
+    {
+      latitude: 32.5,
+      longitude: -6,
+      userID: 1,
+      comment: 'Ich bin salwa'
+    },
+    {
+      latitude: 22.5,
+      longitude: -4,
+      userID: 2,
+      comment: 'Ich bin sahar'
+    }
+  ];
   let accounts = [
     {
       firstname:"Joe",
@@ -88,10 +102,15 @@ function initial(){
   // Init data -> save to Postgressql
 
   const Account = db.Accounts;
+  const Map = db.Map;
 
 
   for(let i=0 ; i< accounts.length;i++){
     Account.create(accounts[i]);
+  }
+
+  for(let i=0 ; i< maps.length;i++){
+    Map.create(maps[i]);
   }
 }
  

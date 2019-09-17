@@ -12,6 +12,16 @@ exports.create = (req, res) => {
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     
+    // Create a highly random byte array of 256 bytes
+    var signingKey = secureRandom(256, {type: 'Buffer'}); 
+
+    var claims = {
+      iss: "localhost",  // The URL of your service
+      sub: "",    // The UID of the user in your system
+      scope: "self, admins"
+    }
+    var jwt = nJwt.create(claims,signingKey,'HS512');
+    var token= jwt.compact();
     console.log("exportts create");
     // Save to PostgreSQL database
     account.create({
@@ -19,7 +29,9 @@ exports.create = (req, res) => {
         "lastname": req.body.lastName,
         "username": req.body.userName,
         "email": req.body.email,
-        "password": hashedPassword, //req.body.password
+        "password": req.body.password, //hashedPassword, //
+        "token": token
+        
     }).then( account =>{
         //Send created Account to Client
         /* res.set('x-token', token); */
@@ -130,18 +142,15 @@ exports.authenticateUser = (req, res) => {
           console.log('JWT: : ',jwt);          
           if (bcrypt.compareSync(req.body.password, hashedPassword)) {
 
-           
+           /*  nJwt.verify(eingeloggteUser.token,signingKey, 'HS512',function(err,verifiedJwt){
+              if(err){
+                console.log('NJWT ERROR: ',err); // Token has expired, has been tampered with, etc
+              }else{
+                console.log('NJWT: ',verifiedJwt); // Will contain the header and body
+              }
+            }); */
             try{
               var verifiedJwt = nJwt.verify(jwt.compact(), signingKey, 'HS512');
-              res.json({
-              id: eingeloggteUser.id,
-              username: eingeloggteUser.username,
-              firstName: eingeloggteUser.firstname,
-              lastName: eingeloggteUser.lastname,
-              email: eingeloggteUser.email,
-              success: true,
-              token: jwt.compact(),
-            });
               console.log('verifiedJwt JWT : ', verifiedJwt);
 
             }catch(e){
@@ -150,7 +159,15 @@ exports.authenticateUser = (req, res) => {
         
             //console.log('eingeloggteUser: ', device, 'bcrypt.compareSync(req.body.password, "123456")', bcrypt.compareSync(req.body.password, hashedPassword));
             
-            
+            res.json({
+              id: eingeloggteUser.id,
+              username: eingeloggteUser.username,
+              firstName: eingeloggteUser.firstname,
+              lastName: eingeloggteUser.lastname,
+              email: eingeloggteUser.email,
+              success: true,
+              token: jwt.compact(),
+            });
         } 
       }
    });
