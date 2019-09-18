@@ -23,3 +23,11 @@ We can summarise abose picture into follwing
 -Client stores that token in local storage or session storage.
 -From next time, the client for making any request supplies the JWT token in request headers like this. Authorization: Bearer <jwt_token>
 -Server upon receiving the JWT validates it and sends the successful response else error.
+
+# Database Tables
+
+  #Account Table
+| Id  | firstname | lastname |   email     | username |   password    |
+| --- | --------- |--------- | ----------- | -------- | ------------- |
+|Contt|Content Cel| Content  |Content Cell | Content Cell  | Content  |
+
