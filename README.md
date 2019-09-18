@@ -26,7 +26,8 @@ We can summarise abose picture into follwing
 
 # Database Tables
 
-  #Account Table
+  # Account Table
+  
 | Id  | firstname | lastname |   email     | username |   password    |
 | --- | --------- |--------- | ----------- | -------- | ------------- |
 |Contt|Content Cel| Content  |Content Cell | Content Cell  | Content  |
