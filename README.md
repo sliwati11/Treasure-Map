@@ -41,6 +41,8 @@ We can summarise abose picture into follwing
   # usermap Table
   
 |     Id    |  userID   |   mapID   |
-| --------- | --------- |---------- | userID column in the usermap table references to the id column of the  table.
+| --------- | --------- |---------- | 
 |Primary Key|foreign key| Content   |
 
+### userID column in the ### usermap table references to the Id column of the ### account table.
+### mapID column in the ### usermap table references to the Id column of the ### maps table.
