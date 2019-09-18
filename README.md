@@ -26,9 +26,21 @@ We can summarise abose picture into follwing
 
 # Database Tables
 
-  # Account Table
+  # account Table
   
-| Id  | firstname | lastname |   email     | username |   password    |
-| --- | --------- |--------- | ----------- | -------- | ------------- |
-|Contt|Content Cel| Content  |Content Cell | Content Cell  | Content  |
+|   Id  | firstname | lastname |   email     | username |   password    |
+| ----- | --------- |--------- | ----------- | -------- | ------------- |
+|Pri.Key|Content Cel| Content  |Content Cell | Content  |    Hash       |
+
+ # maps Table
+  
+| Id  | name |  latitude |  longitude | comment |  
+| --- | ---- | --------- | ---------- | --------|
+|Contt|Conten|  Content  |   Content  | Content |
+
+  # usermap Table
+  
+|     Id    |  userID   |   mapID   |
+| --------- | --------- |---------- | userID column in the usermap table references to the id column of the  table.
+|Primary Key|foreign key| Content   |
 
