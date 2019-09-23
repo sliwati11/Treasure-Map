@@ -23,3 +23,26 @@ We can summarise abose picture into follwing
 -Client stores that token in local storage or session storage.
 -From next time, the client for making any request supplies the JWT token in request headers like this. Authorization: Bearer <jwt_token>
 -Server upon receiving the JWT validates it and sends the successful response else error.
+
+# Database Tables
+
+  ### account Table
+  
+|   Id  | firstname | lastname |   email     | username |   password    |
+| ----- | --------- |--------- | ----------- | -------- | ------------- |
+|Pri.Key|Content Cel| Content  |Content Cell | Content  |    Hash       |
+
+ ### maps Table
+  
+| Id  | name |  latitude |  longitude | comment |  
+| --- | ---- | --------- | ---------- | --------|
+|Contt|Conten|  Content  |   Content  | Content |
+
+  ### usermap Table
+  
+|     Id    |  userID   |    mapID   |
+| --------- | --------- |----------- | 
+|Primary Key|foreign key| foreign key|
+
+- **userID** column in the **usermap** table references to the **Id** column of the **account** table.
+- **mapID** column in the **usermap** table references to the **Id** column of the **maps** table.
