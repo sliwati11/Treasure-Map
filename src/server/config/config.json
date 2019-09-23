@@ -1,0 +1,17 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "Overdrive1819",
+    "database": "database_development",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "root",
+    "password": "hallo1234",
+    "database": "seq-wp-test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
+

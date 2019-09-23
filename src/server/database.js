@@ -32,8 +32,9 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 //Models / tables
-db.Accounts = require('./models/account.model')(sequelize, Sequelize);
-db.Map = require('./models/map.model')(sequelize, Sequelize);
+db.Maps = require('./models/map.model')(sequelize, Sequelize);
+db.Accounts = require('./models/account')(sequelize, Sequelize);
+//db.User_maps = require('./models/userMap.model')(sequelize, Sequelize);
 
 module.exports = db;
 

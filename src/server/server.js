@@ -20,7 +20,7 @@ const corsoptions = {
 app.use(cors())//corsoptions))
 app.use(bearerToken());
 //Gig Routes
-app.use('/gigs',require('./Routers/account.route'));
+/* app.use('/gigs',require('./Routers/account.route')); */
 
 const db = require('../server/database');
 
@@ -42,20 +42,20 @@ var server = app.listen(8090, function(){
 })
 
 function initial(){
+  
   let maps=[
     {
-      latitude: 32.5,
-      longitude: -6,
-      userID: 1,
+      name:"Madrid",
+      userId:2,
       comment: 'Ich bin salwa'
     },
     {
-      latitude: 22.5,
-      longitude: -4,
-      userID: 2,
+      name:"klamotten",
+      userId:1,
       comment: 'Ich bin sahar'
     }
   ];
+
   let accounts = [
     {
       firstname:"Joe",
@@ -63,7 +63,7 @@ function initial(){
       username:"Thomi",
       email : "Joe@gmail.com",
       password: bcrypt.hashSync("123456", 8),
-      age: 36
+
     },
     {
       firstname:"Jowa",
@@ -71,7 +71,7 @@ function initial(){
       username:"Jwana",
       email : "Jowa@gmail.com",
       password: bcrypt.hashSync("123456", 8),
-      age: 36
+
     },
     {
       firstname:"Jowie",
@@ -79,7 +79,7 @@ function initial(){
       username:"Jo",
       email : "Jowie@gmail.com",
       password:bcrypt.hashSync("123456", 8),
-      age: 36
+
     },
     {
       firstname:"Lauiren",
@@ -87,7 +87,7 @@ function initial(){
       username:"Lui",
       email : "Lauruibe@gmail.com",
       password:bcrypt.hashSync("123456", 8),
-      age: 36
+
     },
     {
       firstname:"Mary",
@@ -95,14 +95,15 @@ function initial(){
       username:"Mu",
       email : "Mary@gmail.com",
       password: bcrypt.hashSync("123456", 8),
-      age: 36
+
     },
   ]
 
   // Init data -> save to Postgressql
 
   const Account = db.Accounts;
-  const Map = db.Map;
+  const Maps = db.Maps;
+
 
 
   for(let i=0 ; i< accounts.length;i++){
@@ -110,7 +111,20 @@ function initial(){
   }
 
   for(let i=0 ; i< maps.length;i++){
-    Map.create(maps[i]);
+    Maps.create(maps[i]);
+    
   }
+  /*  User_maps.belongsTo(Account,{foreignKey: {
+    name: 'userID', field: 'id'}});
+ 
+  User_maps.hasMany(Maps,{foreignKey: {
+    name:'mapID', field: 'id'}}); */
+    
+  /* for(let i=0 ; i< user_maps.length;i++){
+    User_maps.create(user_maps[i]);
+  } */
+
+  console.log('huhu: ', Account);
+ 
 }
  
