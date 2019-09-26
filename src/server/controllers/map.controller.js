@@ -2,8 +2,7 @@
 
 const db = require('../database');
 
-const maps= db.Maps; 
-const user_maps = db.User_Maps;
+const maps= db.Maps;
 
 //Post a Account
 exports.create = (req, res) => {
@@ -14,25 +13,63 @@ exports.create = (req, res) => {
     console.log("exportts create", req.body.name);
     // Save to PostgreSQL database
 
-   /*  user_maps.create({
-        "userID": req.body.userID,
-        "mapID": 
-    }); */
+
     maps.create({
         "name":      req.body.name,
-        "latitude":  req.body.latitude,
-        "longitude": req.body.longitude,
         "comment":   req.body.comment,
         "userId": req.body.userId
     }).then( map =>{
-        console.log("exportts map", map.dataValues);
         //Send created Account to Client
         /* res.set('x-token', token); */
-        res.status(200).json({'userMap': map});
-        console.log("Map - " + map);
+        res.status(200).json({'map': map});
+        /* console.log("exportts map", map.dataValues); */
+        console.log("Map - " + res);
     }).catch(err => {
         console.log('Erororororor: '+err);
         res.status(500).json({msg:"error", details:err});
     });
+};
+
+// FETCH All Customers
+exports.findAll = (req, res) => {
+    maps.findAll().then(maps => {
+        // Send All Customers to Client
+        res.json(maps.sort(function(c1, c2){return c1.id - c2.id}));
+    }).catch(err => {
+    console.log(err);
+    res.status(500).json({msg: "error", details: err});
+    });
+};
+
+// Find a Map by Id
+exports.findById = (req, res) => {
+    console.log('findById', req.params.id);
+    
+    maps.findByPk(req.params.id).then(
+        map => {
+                res.json(map);
+                })
+        .catch(err => 
+        {
+        console.log(err);
+        res.status(500).json({msg: "error", details: err});
+    });
+};
+
+exports.findbyName = (req, res) => {
+
+    /* console.log('Maps findID');
+
+    maps.findOne({
+        where: {name: req.params.name}
+    }).then(
+        map =>{
+            res.json(map); 
+        }).catch( err => 
+        {
+            console.log(err);
+            res.status(500).json({msg: "error", details: err});
+        }); */
+
 };
 

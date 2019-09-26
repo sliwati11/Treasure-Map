@@ -7,13 +7,12 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
 
   User.associate = function(models) {
-    // Use can make many Post
+    // a user has many posts and a post belongs to a user (1:n)
     User.hasMany(models.Post, {
       foreignKey: 'userId',
       as: 'posts',
       onDelete: 'CASCADE',
     });
-    // Use can make many Comments
     User.hasMany(models.Comment, {
       foreignKey: 'userId',
       as: 'comments',

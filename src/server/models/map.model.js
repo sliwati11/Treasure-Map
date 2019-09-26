@@ -5,7 +5,7 @@
 //Table with all MAps
 module.exports = (sequelize, DataTypes) => {
 
-    const Maps = sequelize.define('maps',//'accounts',
+    const Maps = sequelize.define('maps',
         {
             
             name : {
@@ -29,9 +29,9 @@ module.exports = (sequelize, DataTypes) => {
         });
 
         //a Map has many Posts
-        Maps.hasMany(models.eintrags,{
+        Maps.hasMany(models.locations,{
             foreignKey: 'mapId',
-            as: 'eintrag',
+            as: 'location',
             onDelete: 'CASCADE',
         });
     }        

@@ -19,9 +19,9 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'CASCADE',
     });
     // a user has many Posts and a Post belongs to a Map
-    Account.hasMany(models.eintrags, {
+    Account.hasMany(models.locations, {
       foreignKey: 'userId',
-      as: 'eintrags',
+      as: 'locations',
       onDelete: 'CASCADE',
     });    
   

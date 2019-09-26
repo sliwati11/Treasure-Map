@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Eintrag = sequelize.define('eintrag',
+  const Locations = sequelize.define('locations',
     {
       title: DataTypes.STRING,
       content: DataTypes.TEXT,
@@ -10,21 +10,21 @@ module.exports = (sequelize, DataTypes) => {
       longitude: DataTypes.FLOAT
     }, {});
 
-    Eintrag.associate = function(models) {
-    // Eintrag belongs to one Map and one User
-      Eintrag.belongsTo(models.maps, {
-        foreignKey: 'mapID',
-        as: 'comment',
-        onDelete: 'CASCADE',
-      });
+    Locations.associate = function(models) {
+      // Location belongs to one Map 
+      Locations.belongsTo(models.maps, {
+          foreignKey: 'mapId',
+          as: 'comment',
+          onDelete: 'CASCADE',
+        });
 
-      //Eintrag belongs to a user
-      Eintrag.belongsTo(models.User, {
+      // Location belongs to a user
+      Locations.belongsTo(models.User, {
         foreignKey: 'userId',
         as: 'author',
         onDelete: 'CASCADE',
       });
       
     };
-  return Eintrag;
+  return Locations;
 };

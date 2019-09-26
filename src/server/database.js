@@ -34,7 +34,7 @@ db.sequelize = sequelize;
 //Models / tables
 db.Maps = require('./models/map.model')(sequelize, Sequelize);
 db.Accounts = require('./models/account')(sequelize, Sequelize);
-//db.User_maps = require('./models/userMap.model')(sequelize, Sequelize);
+db.Locations = require('./models/location')(sequelize, Sequelize);
 
 module.exports = db;
 
